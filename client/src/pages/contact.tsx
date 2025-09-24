@@ -15,7 +15,7 @@ import { apiRequest } from "@/lib/queryClient";
 const contactFormSchema = z.object({
   name: z.string().min(2, "이름은 2글자 이상 입력해주세요"),
   email: z.string().email("유효한 이메일 주소를 입력해주세요"),
-  phone: z.string().optional(),
+  phone: z.string().optional().transform(val => val || null),
   inquiryType: z.string().min(1, "문의 유형을 선택해주세요"),
   message: z.string().min(10, "문의 내용은 10글자 이상 작성해주세요")
 });
@@ -195,7 +195,8 @@ export default function Contact() {
                           <FormControl>
                             <Input 
                               placeholder="010-1234-5678" 
-                              {...field} 
+                              {...field}
+                              value={field.value || ""}
                               data-testid="input-contact-phone"
                             />
                           </FormControl>
