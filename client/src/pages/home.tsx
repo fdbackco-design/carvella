@@ -1,0 +1,118 @@
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import HeroVideo from "@/components/ui/hero-video";
+import ProductCard from "@/components/ui/product-card";
+
+export default function Home() {
+  const featuredProducts = [
+    {
+      title: "프리미엄 나이프",
+      description: "이탈리아 전통 기법으로 제작된 최고급 스테인리스 스틸 나이프",
+      price: "₩250,000~",
+      image: "https://images.unsplash.com/photo-1593618998160-e34014e67546?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+    },
+    {
+      title: "올리브 우드 도마",
+      description: "토스카나산 올리브 원목으로 제작된 천연 항균 도마",
+      price: "₩180,000~",
+      image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+    },
+    {
+      title: "주방 도구 세트",
+      description: "이탈리아 디자인의 완벽한 주방 도구 컬렉션",
+      price: "₩320,000~",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+    }
+  ];
+
+  return (
+    <div data-testid="page-home">
+      {/* Hero Video Section */}
+      <HeroVideo>
+        <div className="max-w-4xl">
+          <h2 className="text-5xl md:text-7xl font-serif font-bold mb-6" data-testid="text-hero-title">
+            <em className="text-accent italic">Tradizione</em>{" "}
+            <span className="text-white">Italiana</span>
+          </h2>
+          <p className="text-xl md:text-2xl mb-8 font-light" data-testid="text-hero-subtitle">
+            이탈리아 전통 장인정신으로 만든 프리미엄 주방용품
+          </p>
+          <Link href="/products">
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold"
+              data-testid="button-explore-products"
+            >
+              제품 둘러보기
+            </Button>
+          </Link>
+        </div>
+      </HeroVideo>
+
+      {/* Product Introduction Section */}
+      <section className="py-20 bg-background" data-testid="section-products">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-serif font-bold text-foreground mb-4" data-testid="text-products-title">
+              우리의 제품
+            </h3>
+            <p className="text-xl text-muted-foreground italic" data-testid="text-products-subtitle">
+              Crafted with Italian Excellence
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredProducts.map((product, index) => (
+              <ProductCard
+                key={index}
+                title={product.title}
+                description={product.description}
+                price={product.price}
+                image={product.image}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Brand Heritage Section */}
+      <section className="py-20 bg-secondary" data-testid="section-heritage">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <img
+                src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                alt="이탈리아 장인 작업장"
+                className="rounded-lg shadow-lg"
+                data-testid="img-heritage-workshop"
+              />
+            </div>
+            <div>
+              <h3 className="text-4xl font-serif font-bold text-foreground mb-6" data-testid="text-heritage-title">
+                <em className="text-primary italic">Dal 1890</em>
+                <br />
+                이탈리아 장인의 전통
+              </h3>
+              <p className="text-lg text-muted-foreground mb-6" data-testid="text-heritage-description-1">
+                130년 전통의 이탈리아 장인 가문에서 시작된 카르벨라는 세대를 거쳐 전승되어온
+                정교한 수작업 기술로 각각의 제품을 정성스럽게 제작합니다.
+              </p>
+              <p className="text-lg text-muted-foreground mb-8" data-testid="text-heritage-description-2">
+                토스카나 지역의 최고급 소재만을 사용하여 만든 우리의 제품은
+                단순한 도구가 아닌 예술 작품입니다.
+              </p>
+              <Link href="/brand">
+                <Button 
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 font-semibold"
+                  data-testid="button-brand-story"
+                >
+                  브랜드 스토리 보기
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
