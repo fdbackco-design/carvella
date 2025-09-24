@@ -2,6 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import carbellaLogo from "@/assets/carbella-logo.png";
 
 export default function Header() {
   const [location] = useLocation();
@@ -24,11 +25,12 @@ export default function Header() {
     <header className="sticky top-0 bg-background/95 backdrop-blur-sm border-b border-border z-50" data-testid="header">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <Link href="/" className="flex items-center space-x-2" data-testid="link-home">
-            <h1 className="text-2xl font-serif font-bold text-primary">
-              카르벨라
-              <span className="text-sm font-sans text-muted-foreground italic ml-2">Carbella</span>
-            </h1>
+          <Link href="/" className="flex items-center" data-testid="link-home">
+            <img 
+              src={carbellaLogo} 
+              alt="카르벨라 Carbella" 
+              className="h-12 w-auto" 
+            />
           </Link>
           
           <nav className="hidden md:flex space-x-4">
