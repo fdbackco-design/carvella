@@ -270,7 +270,8 @@ export default function Contact() {
                   
                   <Button
                     type="submit"
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 font-semibold"
+                    size="accessible"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
                     disabled={mutation.isPending}
                     data-testid="button-submit-contact"
                   >

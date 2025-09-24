@@ -205,7 +205,8 @@ export default function Reviews() {
                 />
                 <Button
                   type="submit"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 font-semibold"
+                  size="accessible"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 font-semibold"
                   disabled={mutation.isPending}
                   data-testid="button-submit-review"
                 >

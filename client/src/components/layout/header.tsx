@@ -31,12 +31,12 @@ export default function Header() {
             </h1>
           </Link>
           
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-4">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
-                className={`nav-link text-foreground hover:text-primary transition-colors font-medium ${
+                className={`nav-link text-foreground hover:text-primary transition-colors font-medium px-3 py-3 rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center ${
                   isActive(item.path) ? "active" : ""
                 }`}
                 data-testid={`link-${item.label.replace(/\s+/g, '-').toLowerCase()}`}
@@ -54,12 +54,12 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <nav className="flex flex-col space-y-4 mt-6">
+              <nav className="flex flex-col space-y-2 mt-6">
                 {navItems.map((item) => (
                   <Link
                     key={item.path}
                     href={item.path}
-                    className={`text-lg font-medium transition-colors ${
+                    className={`text-lg font-medium transition-colors px-4 py-3 rounded-md min-h-[44px] flex items-center ${
                       isActive(item.path) ? "text-primary" : "text-foreground hover:text-primary"
                     }`}
                     data-testid={`mobile-link-${item.label.replace(/\s+/g, '-').toLowerCase()}`}
