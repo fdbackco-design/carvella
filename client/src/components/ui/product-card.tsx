@@ -3,12 +3,11 @@ import { Card, CardContent } from "@/components/ui/card";
 interface ProductCardProps {
   title: string;
   description: string;
-  price: string;
   image: string;
   className?: string;
 }
 
-export default function ProductCard({ title, description, price, image, className = "" }: ProductCardProps) {
+export default function ProductCard({ title, description, image, className = "" }: ProductCardProps) {
   return (
     <Card className={`product-hover bg-card rounded-lg overflow-hidden shadow-lg ${className}`} data-testid={`card-product-${title.replace(/\s+/g, '-').toLowerCase()}`}>
       <img 
@@ -24,9 +23,6 @@ export default function ProductCard({ title, description, price, image, classNam
         <p className="text-muted-foreground mb-4" data-testid={`text-product-description-${title.replace(/\s+/g, '-').toLowerCase()}`}>
           {description}
         </p>
-        <span className="text-primary font-semibold" data-testid={`text-product-price-${title.replace(/\s+/g, '-').toLowerCase()}`}>
-          {price}
-        </span>
       </CardContent>
     </Card>
   );

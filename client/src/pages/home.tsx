@@ -11,21 +11,18 @@ export default function Home() {
       description:
         "이탈리아 전통 기법으로 제작된 최고급 스테인리스 스틸 나이프",
       image: car44,
-      price: "€250",
     },
     {
       title: "올리브 우드 도마",
       description: "토스카나산 올리브 원목으로 제작된 천연 항균 도마",
       image:
         "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      price: "€120",
     },
     {
       title: "주방 도구 세트",
       description: "이탈리아 디자인의 완벽한 주방 도구 컬렉션",
       image:
         "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      price: "€450",
     },
   ];
 
@@ -74,7 +71,6 @@ export default function Home() {
                 key={index}
                 title={product.title}
                 description={product.description}
-                price={product.price}
                 image={product.image}
               />
             ))}
