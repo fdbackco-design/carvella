@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -11,9 +10,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest, queryClient } from "@/lib/queryClient";
 import ReviewCard from "@/components/ui/review-card";
 import type { Review } from "@shared/schema";
+import staticReviews from "@/data/reviews.json";
 
 const reviewFormSchema = z.object({
   name: z.string().min(2, "이름은 2글자 이상 입력해주세요"),
@@ -25,32 +24,68 @@ type ReviewFormData = z.infer<typeof reviewFormSchema>;
 
 export default function Reviews() {
   const { toast } = useToast();
-  
-  const { data: reviews = [], isLoading } = useQuery<Review[]>({
-    queryKey: ["/api/reviews"]
-  });
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const mutation = useMutation({
-    mutationFn: async (data: ReviewFormData) => {
-      const response = await apiRequest("POST", "/api/reviews", data);
-      return response.json();
-    },
-    onSuccess: () => {
+  useEffect(() => {
+    // 정적 리뷰 데이터 로드
+    const loadReviews = () => {
+      const localReviews = localStorage.getItem('carbella-reviews');
+      
+      // JSON 데이터의 날짜 문자열을 Date 객체로 변환
+      const convertedStaticReviews = staticReviews.map(review => ({
+        ...review,
+        createdAt: new Date(review.createdAt)
+      }));
+      
+      if (localReviews) {
+        const parsedReviews = JSON.parse(localReviews);
+        setReviews([...convertedStaticReviews, ...parsedReviews]);
+      } else {
+        setReviews(convertedStaticReviews);
+      }
+      setIsLoading(false);
+    };
+
+    loadReviews();
+  }, []);
+
+  const submitReview = async (data: ReviewFormData) => {
+    setIsSubmitting(true);
+    try {
+      const newReview: Review = {
+        id: Date.now().toString(),
+        name: data.name,
+        rating: data.rating,
+        content: data.content,
+        createdAt: new Date()
+      };
+
+      // 로컬 스토리지에 추가 리뷰 저장
+      const existingReviews = localStorage.getItem('carbella-reviews');
+      const reviews = existingReviews ? JSON.parse(existingReviews) : [];
+      reviews.push(newReview);
+      localStorage.setItem('carbella-reviews', JSON.stringify(reviews));
+
+      // 상태 업데이트
+      setReviews(prevReviews => [...prevReviews, newReview]);
+
       toast({
         title: "리뷰가 등록되었습니다",
         description: "소중한 후기 감사합니다!"
       });
-      queryClient.invalidateQueries({ queryKey: ["/api/reviews"] });
       form.reset();
-    },
-    onError: () => {
+    } catch (error) {
       toast({
         title: "오류가 발생했습니다",
         description: "잠시 후 다시 시도해주세요.",
         variant: "destructive"
       });
+    } finally {
+      setIsSubmitting(false);
     }
-  });
+  };
 
   const form = useForm<ReviewFormData>({
     resolver: zodResolver(reviewFormSchema),
@@ -62,7 +97,7 @@ export default function Reviews() {
   });
 
   const onSubmit = (data: ReviewFormData) => {
-    mutation.mutate(data);
+    submitReview(data);
   };
 
   // Calculate average rating
@@ -207,10 +242,10 @@ export default function Reviews() {
                   type="submit"
                   size="accessible"
                   className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 font-semibold"
-                  disabled={mutation.isPending}
+                  disabled={isSubmitting}
                   data-testid="button-submit-review"
                 >
-                  {mutation.isPending ? "등록 중..." : "리뷰 등록"}
+                  {isSubmitting ? "등록 중..." : "리뷰 등록"}
                 </Button>
               </form>
             </Form>

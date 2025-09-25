@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useMutation } from "@tanstack/react-query";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
+import type { Contact } from "@shared/schema";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "이름은 2글자 이상 입력해주세요"),
@@ -24,27 +24,42 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const mutation = useMutation({
-    mutationFn: async (data: ContactFormData) => {
-      const response = await apiRequest("POST", "/api/contacts", data);
-      return response.json();
-    },
-    onSuccess: () => {
+  const submitContact = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    try {
+      const newContact: Contact = {
+        id: Date.now().toString(),
+        name: data.name,
+        email: data.email,
+        phone: data.phone || null,
+        inquiryType: data.inquiryType,
+        message: data.message,
+        createdAt: new Date()
+      };
+
+      // 로컬 스토리지에 연락처 정보 저장
+      const existingContacts = localStorage.getItem('carbella-contacts');
+      const contacts = existingContacts ? JSON.parse(existingContacts) : [];
+      contacts.push(newContact);
+      localStorage.setItem('carbella-contacts', JSON.stringify(contacts));
+
       toast({
         title: "문의가 접수되었습니다",
         description: "빠른 시일 내에 답변드리겠습니다."
       });
       form.reset();
-    },
-    onError: () => {
+    } catch (error) {
       toast({
         title: "오류가 발생했습니다",
         description: "잠시 후 다시 시도해주세요.",
         variant: "destructive"
       });
+    } finally {
+      setIsSubmitting(false);
     }
-  });
+  };
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
@@ -58,7 +73,7 @@ export default function Contact() {
   });
 
   const onSubmit = (data: ContactFormData) => {
-    mutation.mutate(data);
+    submitContact(data);
   };
 
   const contactInfo = [
@@ -272,10 +287,10 @@ export default function Contact() {
                     type="submit"
                     size="accessible"
                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
-                    disabled={mutation.isPending}
+                    disabled={isSubmitting}
                     data-testid="button-submit-contact"
                   >
-                    {mutation.isPending ? "전송 중..." : "문의 보내기"}
+                    {isSubmitting ? "전송 중..." : "문의 보내기"}
                   </Button>
                 </form>
               </Form>
