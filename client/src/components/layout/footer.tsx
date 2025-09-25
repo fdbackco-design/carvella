@@ -165,7 +165,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-600 pt-8 text-center text-sm text-gray-300">
           <p data-testid="text-footer-copyright">
-            &copy; 2024 카르벨라(Carbella). All rights reserved. |
+            &copy; 2025 카르벨라(Carbella). All rights reserved. |
             사업자등록번호: 123-45-67890
           </p>
         </div>
