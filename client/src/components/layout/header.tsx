@@ -29,7 +29,7 @@ export default function Header() {
             <img 
               src={carbellaLogo} 
               alt="카르벨라 Carbella" 
-              className="h-12 w-auto" 
+              className="h-6 w-auto" 
             />
           </Link>
           
