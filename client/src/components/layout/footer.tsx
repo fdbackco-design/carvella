@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Instagram, Facebook, Youtube } from "lucide-react";
-import carbellaLogoWhite from "@/assets/carbella-logo-white.png";
+import carbellaLogoWhite from "@/assets/carll.png";
 
 export default function Footer() {
   return (

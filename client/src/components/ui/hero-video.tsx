@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import carvellaVideo from "@/assets/carvella-hero.mp4";
 
 interface HeroVideoProps {
   className?: string;
@@ -44,9 +45,8 @@ export default function HeroVideo({ className = "", children }: HeroVideoProps) 
           playsInline
           data-testid="hero-video"
         >
-          {/* Using a placeholder video URL - in production this would be the actual brand video */}
           <source
-            src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761"
+            src={carvellaVideo}
             type="video/mp4"
           />
           {/* Fallback image */}
