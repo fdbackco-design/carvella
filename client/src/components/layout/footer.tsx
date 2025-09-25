@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Instagram, Facebook, Youtube } from "lucide-react";
+import carbellaLogoWhite from "@/assets/carbella-logo-white.png";
 
 export default function Footer() {
   return (
@@ -7,7 +8,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="text-2xl font-serif font-bold mb-4" data-testid="text-footer-brand">카르벨라</h3>
+            <img 
+              src={carbellaLogoWhite} 
+              alt="카르벨라 Carbella" 
+              className="h-8 w-auto mb-4" 
+              data-testid="img-footer-logo"
+            />
             <p className="text-sm text-gray-300 italic mb-4" data-testid="text-footer-tagline">
               Tradizione Italiana dal 1890
             </p>
