@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import HeroVideo from "@/components/ui/hero-video";
 import ProductCard from "@/components/ui/product-card";
 import car44 from "@/assets/car44.png";
+import car4 from "@/assets/car4.png";
 
 export default function Home() {
   const featuredProducts = [
@@ -15,14 +16,12 @@ export default function Home() {
     {
       title: "올리브 우드 도마",
       description: "토스카나산 올리브 원목으로 제작된 천연 항균 도마",
-      image:
-        "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      image: car44,
     },
     {
       title: "주방 도구 세트",
       description: "이탈리아 디자인의 완벽한 주방 도구 컬렉션",
-      image:
-        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      image: car4,
     },
   ];
 
@@ -55,7 +54,7 @@ export default function Home() {
               className="text-4xl font-serif font-bold text-foreground mb-4"
               data-testid="text-products-title"
             >
-              우리의 제품
+              제품
             </h3>
             <p
               className="text-xl text-muted-foreground italic"
@@ -111,8 +110,8 @@ export default function Home() {
                 className="text-lg text-muted-foreground mb-8"
                 data-testid="text-heritage-description-2"
               >
-                토스카나 지역의 최고급 소재만을 사용하여 만든 우리의 제품은
-                단순한 도구가 아닌 예술 작품입니다.
+                최고급 소재만을 사용하여 만든 우리의 제품은 단순한 도구가 아닌
+                예술 작품입니다.
               </p>
               <Link href="/brand">
                 <Button
