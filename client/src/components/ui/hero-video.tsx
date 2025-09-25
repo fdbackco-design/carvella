@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import carvellaVideo from "@/assets/carvella-hero.mp4";
+import carvellaVideo from "@/assets/carvella-hero-new.mp4";
 
 interface HeroVideoProps {
   className?: string;
