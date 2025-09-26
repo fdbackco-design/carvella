@@ -80,7 +80,7 @@ export default function Contact() {
     {
       icon: Phone,
       title: "전화번호",
-      content: "02-1234-5678"
+      content: "031-429-8570"
     },
     {
       icon: Mail,
