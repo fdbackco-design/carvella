@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import HeroVideo from "@/components/ui/hero-video";
 import ProductCard from "@/components/ui/product-card";
+import ResponsiveImage from "@/components/ui/responsive-image";
 import car44 from "@/assets/car44.png";
 import car4 from "@/assets/car4.png";
 
@@ -71,6 +72,7 @@ export default function Home() {
                 title={product.title}
                 description={product.description}
                 image={product.image}
+                priority={index < 3} // Priority load first 3 products
               />
             ))}
           </div>
@@ -81,11 +83,12 @@ export default function Home() {
       <section className="py-20 bg-secondary" data-testid="section-heritage">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <img
+            <div className="aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg">
+              <ResponsiveImage
                 src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
                 alt="이탈리아 장인 작업장"
-                className="rounded-lg shadow-lg"
+                loading="lazy"
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 data-testid="img-heritage-workshop"
               />
             </div>

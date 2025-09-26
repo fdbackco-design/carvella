@@ -1,5 +1,6 @@
 import { Award, HandHeart, Gem } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import ResponsiveImage from "@/components/ui/responsive-image";
 
 export default function Brand() {
   const values = [
@@ -33,11 +34,12 @@ export default function Brand() {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-          <div>
-            <img
+          <div className="aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg">
+            <ResponsiveImage
               src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
               alt="전통 이탈리아 대장간 작업장"
-              className="rounded-lg shadow-lg"
+              loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 50vw"
               data-testid="img-brand-blacksmith"
             />
           </div>

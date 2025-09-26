@@ -1,5 +1,6 @@
 import ProductCard from "@/components/ui/product-card";
 import { Card, CardContent } from "@/components/ui/card";
+import ResponsiveImage from "@/components/ui/responsive-image";
 import car44 from "@/assets/car44.png";
 import car4 from "@/assets/car4.png";
 
@@ -74,14 +75,16 @@ export default function Products() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-16 sm:mb-20">
           {collections.map((collection, index) => (
             <Card key={index} className="bg-card rounded-lg overflow-hidden shadow-lg touch-target-comfortable" data-testid={`card-collection-${index}`}>
-              <div className="aspect-[4/3] w-full overflow-hidden">
-                <img
-                  src={collection.image}
-                  alt={collection.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  data-testid={`img-collection-${index}`}
-                />
-              </div>
+              <ResponsiveImage
+                src={collection.image}
+                alt={collection.title}
+                aspectRatio="aspect-[4/3]"
+                className="transition-transform duration-300 hover:scale-105"
+                priority={index < 2} // Priority load first 2 collections
+                loading={index < 2 ? "eager" : "lazy"}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                data-testid={`img-collection-${index}`}
+              />
               <CardContent className="p-4 sm:p-6 lg:p-8">
                 <h3 className="text-responsive-xl sm:text-responsive-2xl lg:text-responsive-3xl font-serif font-semibold mb-3 sm:mb-4 leading-tight" data-testid={`text-collection-title-${index}`}>
                   {collection.title}
@@ -109,14 +112,15 @@ export default function Products() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {featuredProducts.map((product, index) => (
               <Card key={index} className="bg-card rounded-lg overflow-hidden shadow-lg touch-target-comfortable" data-testid={`card-featured-product-${index}`}>
-                <div className="aspect-[4/3] w-full overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                    data-testid={`img-featured-product-${index}`}
-                  />
-                </div>
+                <ResponsiveImage
+                  src={product.image}
+                  alt={product.title}
+                  aspectRatio="aspect-[4/3]"
+                  className="transition-transform duration-300 hover:scale-105"
+                  loading="lazy"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                  data-testid={`img-featured-product-${index}`}
+                />
                 <CardContent className="p-3 sm:p-4">
                   <h4 className="text-responsive-sm sm:text-responsive-base font-serif font-semibold mb-1 sm:mb-2 leading-tight" data-testid={`text-featured-product-title-${index}`}>
                     {product.title}

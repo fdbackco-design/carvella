@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import ResponsiveImage from "@/components/ui/responsive-image";
 
 interface ReviewCardProps {
   name: string;
@@ -14,12 +15,16 @@ export default function ReviewCard({ name, rating, content, avatar }: ReviewCard
       <CardContent className="p-0">
         <div className="flex items-center mb-3 sm:mb-4">
           {avatar && (
-            <img
-              src={avatar}
-              alt={`${name}의 프로필`}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4 object-cover flex-shrink-0"
-              data-testid={`img-reviewer-${name.replace(/\s+/g, '-').toLowerCase()}`}
-            />
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4 flex-shrink-0 overflow-hidden">
+              <ResponsiveImage
+                src={avatar}
+                alt={`${name}의 프로필`}
+                className="rounded-full"
+                loading="lazy"
+                sizes="(max-width: 640px) 40px, 48px"
+                data-testid={`img-reviewer-${name.replace(/\s+/g, '-').toLowerCase()}`}
+              />
+            </div>
           )}
           <div className="min-w-0 flex-1">
             <h4 className="text-responsive-sm sm:text-responsive-base font-semibold truncate" data-testid={`text-reviewer-name-${name.replace(/\s+/g, '-').toLowerCase()}`}>
