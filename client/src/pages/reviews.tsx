@@ -105,12 +105,6 @@ export default function Reviews() {
     ? reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length
     : 0;
 
-  const customerAvatars = [
-    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100",
-    "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
-  ];
-
   return (
     <div className="py-20 bg-background" data-testid="page-reviews">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -156,13 +150,12 @@ export default function Reviews() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {reviews.map((review, index) => (
+            {reviews.map((review) => (
               <ReviewCard
                 key={review.id}
                 name={review.name}
                 rating={review.rating}
                 content={review.content}
-                avatar={customerAvatars[index % customerAvatars.length]}
               />
             ))}
           </div>
