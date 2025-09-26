@@ -5,7 +5,7 @@ export default function Products() {
   const collections = [
     {
       title: "나이프 컬렉션",
-      image: "https://images.unsplash.com/photo-1593618998160-e34014e67546?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+      image: "/attached_assets/car44_1758875485954.png",
       description: "최고급 독일산 스테인리스 스틸과 이탈리아 전통 기법이 만나 탄생한 완벽한 균형의 프리미엄 나이프 라인입니다.",
       items: [
         "셰프 나이프 (8\", 10\", 12\")",
