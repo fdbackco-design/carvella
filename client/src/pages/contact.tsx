@@ -126,52 +126,25 @@ export default function Contact() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Information */}
+        <div className="max-w-4xl mx-auto text-center">
+          {/* FAQ Section */}
           <div>
-            <h3 className="text-3xl font-serif font-semibold mb-8" data-testid="text-contact-info-title">
-              연락처 정보
+            <h3 className="text-3xl font-serif font-semibold mb-8" data-testid="text-faq-title">
+              자주 묻는 질문
             </h3>
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => {
-                const IconComponent = info.icon;
-                return (
-                  <div key={index} className="flex items-start" data-testid={`contact-info-${index}`}>
-                    <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                      <IconComponent className="w-6 h-6" data-testid={`icon-contact-${index}`} />
-                    </div>
-                    <div>
-                      <p className="font-semibold" data-testid={`text-contact-title-${index}`}>
-                        {info.title}
-                      </p>
-                      <p className="text-muted-foreground whitespace-pre-line" data-testid={`text-contact-content-${index}`}>
-                        {info.content}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            
-            {/* FAQ Section */}
-            <div className="mt-12">
-              <h3 className="text-3xl font-serif font-semibold mb-8" data-testid="text-faq-title">
-                자주 묻는 질문
-              </h3>
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <Card key={index} className="bg-card rounded-lg p-6" data-testid={`card-faq-${index}`}>
-                    <CardContent className="p-0">
-                      <h4 className="font-semibold mb-2" data-testid={`text-faq-question-${index}`}>
-                        {faq.question}
-                      </h4>
-                      <p className="text-muted-foreground" data-testid={`text-faq-answer-${index}`}>
-                        {faq.answer}
-                      </p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <Card key={index} className="bg-card rounded-lg p-6" data-testid={`card-faq-${index}`}>
+                  <CardContent className="p-0">
+                    <h4 className="font-semibold mb-2" data-testid={`text-faq-question-${index}`}>
+                      {faq.question}
+                    </h4>
+                    <p className="text-muted-foreground" data-testid={`text-faq-answer-${index}`}>
+                      {faq.answer}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
