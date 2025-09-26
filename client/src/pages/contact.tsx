@@ -127,6 +127,41 @@ export default function Contact() {
         </div>
         
         <div className="max-w-4xl mx-auto text-center">
+          {/* Customer Service Section */}
+          <div className="mb-16">
+            <div className="bg-slate-700 text-white rounded-2xl p-12 mb-8">
+              <h3 className="text-3xl font-bold mb-4" data-testid="text-service-center-title">
+                카르벨라 고객센터
+              </h3>
+              <p className="text-slate-300 mb-8" data-testid="text-service-center-subtitle">
+                카르벨라는 고객을 소중히 여기고 있습니다.
+              </p>
+              
+              <div className="flex items-center justify-center mb-6">
+                <Phone className="w-6 h-6 mr-3 text-amber-400" />
+                <span className="text-3xl font-bold" data-testid="text-service-phone">
+                  02-1234-5678
+                </span>
+              </div>
+              
+              <div className="space-y-2 text-slate-300 mb-8">
+                <p data-testid="text-service-hours-weekday">
+                  운영시간: 평일 09:00 ~ 18:00
+                </p>
+                <p data-testid="text-service-hours-weekend">
+                  점심시간 12:00 ~ 13:00
+                </p>
+              </div>
+              
+              <Button 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full"
+                data-testid="button-service-inquiry"
+              >
+                고객센터 문의하기
+              </Button>
+            </div>
+          </div>
+
           {/* FAQ Section */}
           <div>
             <h3 className="text-3xl font-serif font-semibold mb-8" data-testid="text-faq-title">
