@@ -97,35 +97,7 @@ export default function Products() {
           ))}
         </div>
         
-        {/* Featured Products Grid */}
-        <div className="mb-12">
-          <h3 className="text-3xl font-serif font-semibold text-center mb-8" data-testid="text-featured-title">
-            추천 제품
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product, index) => (
-              <div key={index} className="product-hover bg-card rounded-lg overflow-hidden shadow-lg" data-testid={`card-featured-${index}`}>
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-48 object-cover"
-                  data-testid={`img-featured-${index}`}
-                />
-                <div className="p-4">
-                  <h4 className="font-semibold mb-2" data-testid={`text-featured-title-${index}`}>
-                    {product.title}
-                  </h4>
-                  <p className="text-sm text-muted-foreground mb-2" data-testid={`text-featured-description-${index}`}>
-                    {product.description}
-                  </p>
-                  <p className="text-primary font-bold" data-testid={`text-featured-price-${index}`}>
-                    {product.price}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        
       </div>
     </div>
   );
