@@ -1,11 +1,13 @@
 import ProductCard from "@/components/ui/product-card";
 import { Card, CardContent } from "@/components/ui/card";
+import car44 from "@/assets/car44.png";
+import car4 from "@/assets/car4.png";
 
 export default function Products() {
   const collections = [
     {
       title: "나이프 컬렉션",
-      image: "/attached_assets/car44_1758777498078.png",
+      image: car44,
       description: "최고급 독일산 스테인리스 스틸과 이탈리아 전통 기법이 만나 탄생한 완벽한 균형의 프리미엄 나이프 라인입니다.",
       items: [
         "셰프 나이프 (8\", 10\", 12\")",
@@ -17,7 +19,7 @@ export default function Products() {
     },
     {
       title: "도마 컬렉션",
-      image: "/attached_assets/car4_1758875504459.png",
+      image: car4,
       description: "토스카나산 올리브 나무와 참나무로 제작된 천연 항균 도마는 기능성과 아름다움을 동시에 제공합니다.",
       items: [
         "올리브 우드 도마 (소형, 중형, 대형)",
