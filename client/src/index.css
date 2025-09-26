@@ -51,6 +51,42 @@
   --shadow-2xl: 0px 2px 0px 0px hsl(25, 75%, 47%, 0.00);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  
+  /* Mobile-First Responsive Typography */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --text-3xl: clamp(1.875rem, 1.6rem + 1.375vw, 2.5rem);
+  --text-4xl: clamp(2.25rem, 1.9rem + 1.75vw, 3rem);
+  --text-5xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+  --text-6xl: clamp(3.75rem, 3rem + 3.75vw, 5rem);
+  --text-7xl: clamp(4.5rem, 3.5rem + 5vw, 6rem);
+  
+  /* Mobile-First Responsive Spacing */
+  --space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --space-sm: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
+  --space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  --space-xl: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --space-2xl: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  --space-3xl: clamp(3rem, 2.4rem + 3vw, 5rem);
+  --space-4xl: clamp(4rem, 3.2rem + 4vw, 6rem);
+  --space-5xl: clamp(5rem, 4rem + 5vw, 8rem);
+  
+  /* Mobile Touch Targets */
+  --touch-target-min: 44px;
+  --touch-target-comfortable: 48px;
+  
+  /* Mobile-Specific Breakpoints */
+  --mobile-small: 320px;
+  --mobile-medium: 375px;
+  --mobile-large: 414px;
+  --tablet-small: 768px;
+  --tablet-large: 1024px;
+  --desktop: 1280px;
 }
 
 .dark {
@@ -82,28 +118,152 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    font-size: var(--text-base);
+    line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
+    line-height: 1.2;
+  }
+  
+  h1 {
+    font-size: var(--text-5xl);
+  }
+  
+  h2 {
+    font-size: var(--text-4xl);
+  }
+  
+  h3 {
+    font-size: var(--text-3xl);
+  }
+  
+  h4 {
+    font-size: var(--text-2xl);
+  }
+  
+  h5 {
+    font-size: var(--text-xl);
+  }
+  
+  h6 {
+    font-size: var(--text-lg);
   }
 }
 
+/* Mobile-optimized video */
 .hero-video {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
+@media (max-width: 768px) {
+  .hero-video {
+    object-position: center;
+    min-height: 300px;
+  }
+}
+
+/* Touch-friendly hover effects */
 .product-hover {
   transition: all 0.3s ease;
 }
 
-.product-hover:hover {
-  transform: translateY(-5px);
+@media (hover: hover) and (pointer: fine) {
+  .product-hover:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .product-hover:active {
+    transform: scale(0.98);
+  }
 }
 
 .nav-link.active {
   color: var(--primary);
   border-bottom: 2px solid var(--primary);
+}
+
+/* Mobile-first responsive utilities */
+@layer utilities {
+  .text-responsive-xs {
+    font-size: var(--text-xs);
+  }
+  
+  .text-responsive-sm {
+    font-size: var(--text-sm);
+  }
+  
+  .text-responsive-base {
+    font-size: var(--text-base);
+  }
+  
+  .text-responsive-lg {
+    font-size: var(--text-lg);
+  }
+  
+  .text-responsive-xl {
+    font-size: var(--text-xl);
+  }
+  
+  .text-responsive-2xl {
+    font-size: var(--text-2xl);
+  }
+  
+  .text-responsive-3xl {
+    font-size: var(--text-3xl);
+  }
+  
+  .text-responsive-4xl {
+    font-size: var(--text-4xl);
+  }
+  
+  .text-responsive-5xl {
+    font-size: var(--text-5xl);
+  }
+  
+  .space-responsive-xs {
+    margin: var(--space-xs);
+  }
+  
+  .space-responsive-sm {
+    margin: var(--space-sm);
+  }
+  
+  .space-responsive-md {
+    margin: var(--space-md);
+  }
+  
+  .space-responsive-lg {
+    margin: var(--space-lg);
+  }
+  
+  .space-responsive-xl {
+    margin: var(--space-xl);
+  }
+  
+  .touch-target {
+    min-height: var(--touch-target-min);
+    min-width: var(--touch-target-min);
+  }
+  
+  .touch-target-comfortable {
+    min-height: var(--touch-target-comfortable);
+    min-width: var(--touch-target-comfortable);
+  }
+}
+
+/* Mobile accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .product-hover,
+  .hero-video,
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
