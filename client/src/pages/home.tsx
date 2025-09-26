@@ -29,16 +29,16 @@ export default function Home() {
     <div data-testid="page-home">
       {/* Hero Video Section */}
       <HeroVideo>
-        <div className="max-w-4xl">
+        <div className="max-w-4xl mx-auto">
           <h2
-            className="text-5xl md:text-7xl font-serif font-bold mb-6"
+            className="text-responsive-5xl sm:text-responsive-6xl font-serif font-bold mb-4 sm:mb-6 leading-tight"
             data-testid="text-hero-title"
           >
             <em className="text-accent italic">Carvella</em>{" "}
             <span className="text-white">Italiana</span>
           </h2>
           <p
-            className="text-xl md:text-2xl mb-8 font-light"
+            className="text-responsive-lg sm:text-responsive-xl mb-6 sm:mb-8 font-light leading-relaxed max-w-2xl mx-auto"
             data-testid="text-hero-subtitle"
           >
             이탈리아 전통 장인정신으로 만든 프리미엄 주방용품
