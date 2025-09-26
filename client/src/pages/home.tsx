@@ -21,7 +21,7 @@ export default function Home() {
     {
       title: "주방 도구 세트",
       description: "이탈리아 디자인의 완벽한 주방 도구 컬렉션",
-      image: car4,
+      image: car44,
     },
   ];
 

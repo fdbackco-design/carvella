@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import carbellaLogoWhite from "@/assets/carll.png";
 
 export default function Footer() {
