@@ -149,34 +149,177 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Customer Service Section */}
+        <div className="max-w-4xl mx-auto">
+          {/* Contact Form Section */}
           <div className="mb-16">
-            <div className="bg-stone-800 text-white rounded-2xl p-12 mb-8">
+            <Card className="bg-card rounded-2xl p-6 sm:p-8 lg:p-12 mb-8">
+              <CardContent className="p-0">
+                <h3
+                  className="text-responsive-2xl sm:text-responsive-3xl font-serif font-bold text-center mb-6 sm:mb-8"
+                  data-testid="text-contact-form-title"
+                >
+                  문의하기
+                </h3>
+                <p
+                  className="text-responsive-base text-muted-foreground text-center mb-8 sm:mb-12"
+                  data-testid="text-contact-form-subtitle"
+                >
+                  궁금한 점이나 문의사항을 남겨주세요. 빠른 시일 내에 답변드리겠습니다.
+                </p>
+
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" data-testid="form-contact">
+                    {/* Name and Email Row - Stack on mobile, side by side on desktop */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-sm font-medium">이름 *</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="성함을 입력해주세요"
+                                {...field}
+                                className="touch-target-comfortable"
+                                data-testid="input-name"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-sm font-medium">이메일 *</FormLabel>
+                            <FormControl>
+                              <Input
+                                type="email"
+                                placeholder="example@email.com"
+                                {...field}
+                                className="touch-target-comfortable"
+                                data-testid="input-email"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    {/* Phone and Inquiry Type Row */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-sm font-medium">연락처</FormLabel>
+                            <FormControl>
+                              <Input
+                                type="tel"
+                                placeholder="010-1234-5678"
+                                {...field}
+                                value={field.value || ""}
+                                className="touch-target-comfortable"
+                                data-testid="input-phone"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="inquiryType"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-sm font-medium">문의 유형 *</FormLabel>
+                            <Select onValueChange={field.onChange} value={field.value ?? ""}>
+                              <FormControl>
+                                <SelectTrigger className="touch-target-comfortable" data-testid="select-inquiry-type">
+                                  <SelectValue placeholder="문의 유형을 선택해주세요" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectItem value="product">제품 문의</SelectItem>
+                                <SelectItem value="order">주문 문의</SelectItem>
+                                <SelectItem value="shipping">배송 문의</SelectItem>
+                                <SelectItem value="warranty">A/S 문의</SelectItem>
+                                <SelectItem value="other">기타 문의</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    {/* Message Field - Full width */}
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-sm font-medium">문의 내용 *</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="문의하실 내용을 자세히 적어주세요..."
+                              className="min-h-[120px] resize-none"
+                              {...field}
+                              data-testid="textarea-message"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    {/* Submit Button */}
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full touch-target-comfortable bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 sm:py-4"
+                      data-testid="button-submit-contact"
+                    >
+                      {isSubmitting ? "전송 중..." : "문의 전송"}
+                    </Button>
+                  </form>
+                </Form>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Customer Service Section */}
+          <div className="text-center mb-16">
+            <div className="bg-stone-800 text-white rounded-2xl p-6 sm:p-8 lg:p-12 mb-8">
               <h3
-                className="text-3xl font-bold mb-4"
+                className="text-responsive-2xl sm:text-responsive-3xl font-bold mb-4"
                 data-testid="text-service-center-title"
               >
                 카르벨라 고객센터
               </h3>
               <p
-                className="text-slate-300 mb-8"
+                className="text-slate-300 mb-6 sm:mb-8"
                 data-testid="text-service-center-subtitle"
               >
                 카르벨라는 모든 고객을 소중히 여깁니다.
               </p>
 
               <div className="flex items-center justify-center mb-6">
-                <Phone className="w-6 h-6 mr-3 text-amber-400" />
+                <Phone className="w-5 h-5 sm:w-6 sm:h-6 mr-3 text-amber-400" />
                 <span
-                  className="text-3xl font-bold"
+                  className="text-responsive-2xl sm:text-responsive-3xl font-bold"
                   data-testid="text-service-phone"
                 >
                   031-429-8570
                 </span>
               </div>
 
-              <div className="space-y-2 text-slate-300 mb-8">
+              <div className="space-y-2 text-slate-300 mb-6 sm:mb-8">
                 <p data-testid="text-service-hours-weekday">
                   운영시간: 평일 10:00 ~ 18:00
                 </p>
@@ -190,7 +333,7 @@ export default function Contact() {
           {/* FAQ Section */}
           <div>
             <h3
-              className="text-3xl font-serif font-semibold mb-8"
+              className="text-responsive-2xl sm:text-responsive-3xl font-serif font-semibold text-center mb-8"
               data-testid="text-faq-title"
             >
               자주 묻는 질문
@@ -199,18 +342,18 @@ export default function Contact() {
               {faqs.map((faq, index) => (
                 <Card
                   key={index}
-                  className="bg-card rounded-lg p-6"
+                  className="bg-card rounded-lg p-4 sm:p-6"
                   data-testid={`card-faq-${index}`}
                 >
                   <CardContent className="p-0">
                     <h4
-                      className="font-semibold mb-2"
+                      className="font-semibold mb-2 text-sm sm:text-base"
                       data-testid={`text-faq-question-${index}`}
                     >
                       {faq.question}
                     </h4>
                     <p
-                      className="text-muted-foreground"
+                      className="text-muted-foreground text-sm sm:text-base"
                       data-testid={`text-faq-answer-${index}`}
                     >
                       {faq.answer}
