@@ -104,38 +104,7 @@ export default function Products() {
           ))}
         </div>
         
-        {/* Featured Products Section */}
-        <div className="mb-16 sm:mb-20">
-          <h3 className="text-responsive-2xl sm:text-responsive-3xl font-serif font-bold text-center mb-8 sm:mb-12" data-testid="text-featured-products-title">
-            인기 제품
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {featuredProducts.map((product, index) => (
-              <Card key={index} className="bg-card rounded-lg overflow-hidden shadow-lg touch-target-comfortable" data-testid={`card-featured-product-${index}`}>
-                <ResponsiveImage
-                  src={product.image}
-                  alt={product.title}
-                  aspectRatio="aspect-[4/3]"
-                  className="transition-transform duration-300 hover:scale-105"
-                  loading="lazy"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                  data-testid={`img-featured-product-${index}`}
-                />
-                <CardContent className="p-3 sm:p-4">
-                  <h4 className="text-responsive-sm sm:text-responsive-base font-serif font-semibold mb-1 sm:mb-2 leading-tight" data-testid={`text-featured-product-title-${index}`}>
-                    {product.title}
-                  </h4>
-                  <p className="text-responsive-xs sm:text-responsive-sm text-muted-foreground mb-2 sm:mb-3" data-testid={`text-featured-product-description-${index}`}>
-                    {product.description}
-                  </p>
-                  <p className="text-responsive-base sm:text-responsive-lg font-bold text-primary" data-testid={`text-featured-product-price-${index}`}>
-                    {product.price}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+        
         
       </div>
     </div>
