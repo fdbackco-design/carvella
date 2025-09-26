@@ -49,22 +49,22 @@ export default function Home() {
       {/* Product Introduction Section */}
       <section className="py-20 bg-background" data-testid="section-products">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 sm:mb-16">
             <h3
-              className="text-4xl font-serif font-bold text-foreground mb-4"
+              className="text-responsive-2xl sm:text-responsive-3xl lg:text-responsive-4xl font-serif font-bold text-foreground mb-4"
               data-testid="text-products-title"
             >
               제품
             </h3>
             <p
-              className="text-xl text-muted-foreground italic"
+              className="text-responsive-lg sm:text-responsive-xl text-muted-foreground italic"
               data-testid="text-products-subtitle"
             >
               Crafted with Italian Excellence
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {featuredProducts.map((product, index) => (
               <ProductCard
                 key={index}
@@ -91,7 +91,7 @@ export default function Home() {
             </div>
             <div>
               <h3
-                className="text-4xl font-serif font-bold text-foreground mb-6"
+                className="text-responsive-2xl sm:text-responsive-3xl lg:text-responsive-4xl font-serif font-bold text-foreground mb-4 sm:mb-6 leading-tight"
                 data-testid="text-heritage-title"
               >
                 <em className="text-primary italic">Dal 1890</em>
@@ -99,7 +99,7 @@ export default function Home() {
                 이탈리아 장인의 전통
               </h3>
               <p
-                className="text-lg text-muted-foreground mb-6"
+                className="text-responsive-base sm:text-responsive-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed"
                 data-testid="text-heritage-description-1"
               >
                 130년 전통의 이탈리아 장인 가문에서 시작된 카르벨라는 세대를
