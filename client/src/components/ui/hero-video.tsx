@@ -93,7 +93,7 @@ export default function HeroVideo({ className = "", children }: HeroVideoProps) 
         <div className="absolute inset-0 bg-black/40 sm:bg-black/30"></div>
       </div>
       <div className="relative z-10 flex items-center justify-center h-full text-center text-white px-4 sm:px-6 lg:px-8 py-8">
-        <div className="w-full">
+        <div className="w-full max-w-4xl">
           {children}
         </div>
       </div>
