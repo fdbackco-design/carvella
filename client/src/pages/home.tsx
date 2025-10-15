@@ -4,7 +4,6 @@ import HeroVideo from "@/components/ui/hero-video";
 import ProductCard from "@/components/ui/product-card";
 import ResponsiveImage from "@/components/ui/responsive-image";
 import car44 from "@/assets/car44.png";
-import car4 from "@/assets/car4.png";
 
 export default function Home() {
   const featuredProducts = [
@@ -27,12 +26,12 @@ export default function Home() {
   ];
 
   return (
-    <div data-testid="page-home">
+    <div data-testid="page-home" className="font-pretendard font-sans">
       {/* Hero Video Section */}
       <HeroVideo>
         <div className="max-w-4xl mx-auto">
           <h2
-            className="text-responsive-5xl sm:text-responsive-6xl font-serif font-bold mb-4 sm:mb-6 leading-tight"
+            className="text-responsive-5xl sm:text-responsive-6xl font-bold mb-4 sm:mb-6 leading-tight"
             data-testid="text-hero-title"
           >
             <em className="text-accent italic">Carvella</em>{" "}
@@ -52,7 +51,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h3
-              className="text-responsive-2xl sm:text-responsive-3xl lg:text-responsive-4xl font-serif font-bold text-foreground mb-4"
+              className="text-responsive-2xl sm:text-responsive-3xl lg:text-responsive-4xl font-bold text-foreground mb-4"
               data-testid="text-products-title"
             >
               제품
@@ -72,7 +71,7 @@ export default function Home() {
                 title={product.title}
                 description={product.description}
                 image={product.image}
-                priority={index < 3} // Priority load first 3 products
+                priority={index < 3}
               />
             ))}
           </div>
@@ -94,7 +93,7 @@ export default function Home() {
             </div>
             <div>
               <h3
-                className="text-responsive-2xl sm:text-responsive-3xl lg:text-responsive-4xl font-serif font-bold text-foreground mb-4 sm:mb-6 leading-tight"
+                className="text-responsive-2xl sm:text-responsive-3xl lg:text-responsive-4xl font-bold text-foreground mb-4 sm:mb-6 leading-tight"
                 data-testid="text-heritage-title"
               >
                 <em className="text-primary italic">Dal 1890</em>

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import building from "@/assets/building.jpg";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -55,7 +56,6 @@ export default function Contact() {
         createdAt: new Date(),
       };
 
-      // 로컬 스토리지에 연락처 정보 저장
       const existingContacts = localStorage.getItem("carbella-contacts");
       const contacts = existingContacts ? JSON.parse(existingContacts) : [];
       contacts.push(newContact);
@@ -93,16 +93,8 @@ export default function Contact() {
   };
 
   const contactInfo = [
-    {
-      icon: Phone,
-      title: "전화번호",
-      content: "031-429-8570",
-    },
-    {
-      icon: Mail,
-      title: "이메일",
-      content: "contact@carbella.kr",
-    },
+    { icon: Phone, title: "전화번호", content: "031-429-8570" },
+    { icon: Mail, title: "이메일", content: "contact@carbella.kr" },
     {
       icon: MapPin,
       title: "주소",
@@ -132,11 +124,11 @@ export default function Contact() {
   ];
 
   return (
-    <div className="py-20 bg-background" data-testid="page-contact">
+    <div className="py-20 bg-background font-sans" data-testid="page-contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2
-            className="text-5xl font-serif font-bold text-foreground mb-6"
+            className="text-5xl font-sans font-bold text-foreground mb-6"
             data-testid="text-contact-title"
           >
             고객센터
@@ -150,41 +142,52 @@ export default function Contact() {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          
+          {/* Customer Service Center */}
+          <div className="relative rounded-lg overflow-hidden mb-8 sm:mb-12">
+            {/* 배경 이미지 */}
+            <img
+              src={building}
+              alt="Carvella A/S Center Building"
+              className="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+            />
 
-          {/* Customer Service Section */}
-          <div className="text-center mb-16">
-            <div className="bg-stone-800 text-white rounded-2xl p-6 sm:p-8 lg:p-12 mb-8">
-              <h3
-                className="text-responsive-2xl sm:text-responsive-3xl font-bold mb-4"
+            {/* 반투명 오버레이 */}
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+
+            {/* 내용 영역 */}
+            <div className="relative z-10 text-primary-foreground text-center p-6 sm:p-8">
+              <h2
+                className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4"
                 data-testid="text-service-center-title"
               >
-                카르벨라 고객센터
-              </h3>
+                A/S 센터
+              </h2>
+
               <p
-                className="text-slate-300 mb-6 sm:mb-8"
-                data-testid="text-service-center-subtitle"
+                className="text-primary-foreground/80 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed"
+                data-testid="text-service-center-description"
               >
-                카르벨라는 모든 고객을 소중히 여깁니다.
+                카르벨라 A/S 센터를 상시 운영하고 있습니다.
               </p>
 
-              <div className="flex items-center justify-center mb-6">
-                <Phone className="w-5 h-5 sm:w-6 sm:h-6 mr-3 text-amber-400" />
+              <div className="flex items-center justify-center mb-4 sm:mb-6">
+                <Phone className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 text-accent" />
                 <span
-                  className="text-responsive-2xl sm:text-responsive-3xl font-bold"
+                  className="text-xl sm:text-2xl font-bold"
                   data-testid="text-service-phone"
                 >
                   031-429-8570
                 </span>
               </div>
 
-              <div className="space-y-2 text-slate-300 mb-6 sm:mb-8">
-                <p data-testid="text-service-hours-weekday">
-                  운영시간: 평일 10:00 ~ 18:00
-                </p>
-                <p data-testid="text-service-hours-weekend">
-                  점심시간 12:00 ~ 13:00
-                </p>
+              <div className="space-y-1 sm:space-y-2 text-primary-foreground/80 text-xs sm:text-sm">
+                <div data-testid="text-service-hours-weekday">
+                  운영시간 : AM 10:00 ~ PM 17:00
+                </div>
+                <div data-testid="text-service-hours-weekend">
+                  점심시간 PM 12:30~ PM 13:30
+                </div>
               </div>
             </div>
           </div>
@@ -192,12 +195,12 @@ export default function Contact() {
           {/* FAQ Section */}
           <div>
             <h3
-              className="text-responsive-2xl sm:text-responsive-3xl font-serif font-semibold text-center mb-8"
+              className="text-responsive-2xl sm:text-responsive-3xl font-sans font-semibold text-center mb-8"
               data-testid="text-faq-title"
             >
               자주 묻는 질문
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-4 font-sans">
               {faqs.map((faq, index) => (
                 <Card
                   key={index}
