@@ -137,7 +137,7 @@ export default function Contact() {
             className="text-xl text-muted-foreground italic"
             data-testid="text-contact-subtitle"
           >
-            Servizio Clienti
+            최고의 서비스로 도와드리겠습니다.
           </p>
         </div>
 
