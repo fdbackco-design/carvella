@@ -29,19 +29,23 @@ export default function Home() {
     <div data-testid="page-home" className="font-pretendard font-sans">
       {/* Hero Video Section */}
       <HeroVideo>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2
-            className="text-responsive-5xl sm:text-responsive-6xl font-bold mb-4 sm:mb-6 leading-tight"
+            className="text-responsive-4xl sm:text-responsive-5xl lg:text-responsive-6xl font-bold mb-4 sm:mb-6 leading-tight text-center"
             data-testid="text-hero-title"
           >
-            <em className="text-accent italic">Carvella</em>{" "}
-            <span className="text-white">Italiana</span>
+            <span className="block mb-2">
+              <em className="text-accent italic">Carvella</em>{" "}
+              <span className="text-white">Italiana</span>
+            </span>
           </h2>
           <p
-            className="text-responsive-lg sm:text-responsive-xl mb-6 sm:mb-8 font-light leading-relaxed max-w-2xl mx-auto"
+            className="text-responsive-base sm:text-responsive-lg lg:text-responsive-xl mb-6 sm:mb-8 font-light leading-relaxed max-w-2xl mx-auto text-center px-4"
             data-testid="text-hero-subtitle"
           >
-            이탈리아 전통 장인정신으로 만든 프리미엄 주방용품
+            이탈리아 전통 장인정신으로 만든
+            <br className="sm:hidden" />
+            {" "}프리미엄 주방용품
           </p>
         </div>
       </HeroVideo>
