@@ -161,32 +161,92 @@ export default function Contact() {
                 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4"
                 data-testid="text-service-center-title"
               >
-                A/S 센터
+                고객 지원 안내
               </h2>
 
               <p
                 className="text-primary-foreground/80 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed"
                 data-testid="text-service-center-description"
               >
-                카르벨라 A/S 센터를 상시 운영하고 있습니다.
+                아래 연락처로 빠르게 도와드리겠습니다.
               </p>
 
-              <div className="flex items-center justify-center mb-4 sm:mb-6">
-                <Phone className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 text-accent" />
-                <span
-                  className="text-xl sm:text-2xl font-bold"
-                  data-testid="text-service-phone"
+              {/* ✅ 2열 연락처 카드: A/S / B2B */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 text-left max-w-3xl mx-auto mb-5 sm:mb-6">
+                {/* A/S 고객센터 */}
+                <div
+                  className="rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 p-4 sm:p-5"
+                  data-testid="card-cs-as"
                 >
-                  031-429-8570
-                </span>
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 shrink-0">
+                      <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-base sm:text-lg font-semibold leading-tight">
+                        고객센터 (A/S)
+                      </div>
+                      <div className="mt-1 text-sm sm:text-base">
+                        <span className="font-bold tracking-wide text-primary-foreground">
+                          031-429-8570
+                        </span>
+                      </div>
+                      <p className="mt-2 text-xs sm:text-sm text-primary-foreground/80 leading-relaxed">
+                        제품 고장 및 불량 문의는 고객센터로 연락해주세요.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* B2B 문의 */}
+                <div
+                  className="rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 p-4 sm:p-5"
+                  data-testid="card-cs-b2b"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 shrink-0">
+                      <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-base sm:text-lg font-semibold leading-tight">
+                        B2B 납품 문의
+                      </div>
+                      <div className="mt-1 text-sm sm:text-base">
+                        <span className="font-bold tracking-wide text-primary-foreground">
+                          070-8211-1761
+                        </span>
+                      </div>
+                      <ul className="mt-2 space-y-1 text-xs sm:text-sm text-primary-foreground/90">
+                        <li>
+                          <span className="opacity-80">담당:</span>{" "}
+                          <span className="font-medium">손성훈 이사</span>
+                        </li>
+                        <li className="break-all">
+                          <span className="opacity-80">대표메일:</span>{" "}
+                          <a
+                            href="mailto:fdbackteams@gmail.com"
+                            className="font-medium underline"
+                          >
+                            fdbackteams@gmail.com
+                          </a>
+                        </li>
+                        <li className="leading-relaxed">
+                          대량 구매 및 B2B 납품 문의는 담당자에게 연락
+                          부탁드립니다.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="space-y-1 sm:space-y-2 text-primary-foreground/80 text-xs sm:text-sm">
+              {/* 운영 시간 */}
+              <div className="text-primary-foreground/80 text-xs sm:text-sm space-y-1 sm:space-y-2">
                 <div data-testid="text-service-hours-weekday">
-                  운영시간 : AM 10:00 ~ PM 17:00
+                  운영시간 : AM 10:00 ~ PM 18:00
                 </div>
                 <div data-testid="text-service-hours-weekend">
-                  점심시간 PM 12:30~ PM 13:30
+                  점심시간 PM 12:30 ~ PM 13:30
                 </div>
               </div>
             </div>
